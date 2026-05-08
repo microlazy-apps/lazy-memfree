@@ -1,0 +1,79 @@
+params:
+  - id: OPENAI_API_KEY
+    type: password
+    name: "OpenAI API Key"
+    description: "OpenAI 兼容的 API Key（用于嵌入与默认对话模型）。可填 OpenAI 官方 key 或任意兼容服务的 key。"
+    optional: false
+
+  - id: OPENAI_BASE_URL
+    type: string
+    name: "OpenAI Base URL"
+    description: "OpenAI 兼容 API 的 base URL。留空使用 OpenAI 官方；可改为 Azure OpenAI / DeepSeek / 阿里云百炼等兼容端点。"
+    default_value: "https://api.openai.com/v1"
+    optional: true
+
+  - id: SERPER_API_KEY
+    type: password
+    name: "Serper API Key"
+    description: "https://serper.dev 网络搜索服务 key（用于 Google 搜索）。免费额度足够日常使用。不填则不能进行实时联网搜索。"
+    optional: true
+
+  - id: ANTHROPIC_API_KEY
+    type: password
+    name: "Anthropic API Key (可选)"
+    description: "Claude 模型支持。不填则不开启。"
+    optional: true
+
+  - id: DEEPSEEK_API_KEY
+    type: password
+    name: "DeepSeek API Key (可选)"
+    description: "DeepSeek 模型支持。"
+    optional: true
+
+  - id: QWEN_API_KEY
+    type: password
+    name: "Qwen / DashScope API Key (可选)"
+    description: "通义千问 / 阿里云百炼 API Key。"
+    optional: true
+
+  - id: OPENROUTER_API_KEY
+    type: password
+    name: "OpenRouter API Key (可选)"
+    description: "通过 OpenRouter 聚合多种模型。"
+    optional: true
+
+  - id: GOOGLE_GENERATIVE_AI_API_KEY
+    type: password
+    name: "Google Gemini API Key (可选)"
+    description: "Gemini 模型支持。"
+    optional: true
+
+  - id: JINA_KEY
+    type: password
+    name: "Jina Reranker Key (可选)"
+    description: "Jina AI rerank 接口 key，用于检索重排。"
+    optional: true
+
+  - id: AUTH_GITHUB_ID
+    type: string
+    name: "GitHub OAuth Client ID (可选)"
+    description: "GitHub OAuth 登录。Authorization callback URL 填 https://memfree.{box-domain}/api/auth/callback/github"
+    optional: true
+
+  - id: AUTH_GITHUB_SECRET
+    type: password
+    name: "GitHub OAuth Client Secret (可选)"
+    description: "与 GitHub OAuth Client ID 配对使用。"
+    optional: true
+
+  - id: AUTH_GOOGLE_ID
+    type: string
+    name: "Google OAuth Client ID (可选)"
+    description: "Google OAuth 登录。Authorized redirect URI 填 https://memfree.{box-domain}/api/auth/callback/google"
+    optional: true
+
+  - id: AUTH_GOOGLE_SECRET
+    type: password
+    name: "Google OAuth Client Secret (可选)"
+    description: "与 Google OAuth Client ID 配对使用。"
+    optional: true

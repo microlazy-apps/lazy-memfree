@@ -1,0 +1,48 @@
+source: https://github.com/memfreeme/memfree
+source_author: memfreeme
+is_original: false
+keywords: ai-search,hybrid-search,rag,knowledge-base,vector-search,lancedb,upstash-redis,openai,claude,gemini
+support_pc: true
+support_mobile: true
+
+screenshots:
+  pc:
+    - lazycat/screenshots/01-home.png
+    - lazycat/screenshots/02-search.png
+  mobile: []
+
+description:
+  zh-CN: |
+    MemFree 自托管 Hybrid AI 搜索 — 把笔记、书签、文档和实时网页
+    搜索合并成一个 AI 助手。
+
+    特性：
+    - 私有知识库：上传 PDF / Word / Markdown / 文本，向量化检索
+    - 联网搜索：Google（Serper）/ Exa 实时检索
+    - 多模型：OpenAI / Claude / Gemini / DeepSeek / Qwen / OpenRouter
+    - 多输入：文本、图片、文件、网页
+    - 多输出：文本回答、思维导图、AI 图片
+
+    依赖：
+    - OpenAI 兼容 API Key（必填，用于嵌入与对话）
+    - Serper API Key（推荐，用于联网搜索）
+
+    上游项目：https://github.com/memfreeme/memfree
+    本仓库（懒猫包装）：https://github.com/microlazy-apps/lazy-memfree
+  en: |
+    MemFree self-hosted Hybrid AI Search — combines your notes,
+    bookmarks, docs, and live web search into one AI assistant.
+
+    Features:
+    - Private KB: upload PDF / Word / Markdown / text, vector retrieval
+    - Live web search via Serper / Exa
+    - Multi-model: OpenAI / Claude / Gemini / DeepSeek / Qwen / OpenRouter
+    - Multi-input: text, images, files, web pages
+    - Multi-output: text answers, mind maps, AI images
+
+    Requires:
+    - OpenAI-compatible API Key (required, for embeddings + chat)
+    - Serper API Key (recommended, for web search)
+
+    Upstream project: https://github.com/memfreeme/memfree
+    Wrapper repo: https://github.com/microlazy-apps/lazy-memfree

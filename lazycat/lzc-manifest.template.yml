@@ -1,0 +1,101 @@
+application:
+  subdomain: memfree
+  upstreams:
+    - location: /
+      backend: http://main:80
+  public_path:
+    - /
+  health_check:
+    test_url: http://main:80/health
+    timeout: 10s
+    start_period: 90s
+
+services:
+  main:
+    image: ${LAZYCAT_IMAGE}
+    environment:
+      - TZ=Asia/Shanghai
+
+      # Vector + frontend internal wiring (loopback inside this container)
+      - VECTOR_HOST=http://127.0.0.1:3001
+      - VECTOR_INDEX_HOST=http://127.0.0.1:3001
+
+      # Upstash REST emulator (separate service in this stack)
+      - UPSTASH_REDIS_REST_URL=http://redis-http:80
+      - UPSTASH_REDIS_REST_TOKEN={{stable_secret "SRH_TOKEN"}}
+
+      # Shared secrets for next-auth (frontend) and JWT decrypt (vector)
+      - AUTH_SECRET={{stable_secret "AUTH_SECRET"}}
+      - JWT_SECRET={{stable_secret "AUTH_SECRET"}}
+      - API_TOKEN={{stable_secret "API_TOKEN"}}
+
+      # Search backends — required for web search to work
+      - OPENAI_API_KEY={{.U.OPENAI_API_KEY}}
+      - OPENAI_BASE_URL={{.U.OPENAI_BASE_URL}}
+      - SERPER_API_KEY={{.U.SERPER_API_KEY}}
+
+      # Optional alternative providers
+      - ANTHROPIC_API_KEY={{.U.ANTHROPIC_API_KEY}}
+      - DEEPSEEK_API_KEY={{.U.DEEPSEEK_API_KEY}}
+      - QWEN_API_KEY={{.U.QWEN_API_KEY}}
+      - OPENROUTER_API_KEY={{.U.OPENROUTER_API_KEY}}
+      - GOOGLE_GENERATIVE_AI_API_KEY={{.U.GOOGLE_GENERATIVE_AI_API_KEY}}
+      - JINA_KEY={{.U.JINA_KEY}}
+
+      # Optional OAuth — leave blank to disable each provider
+      - AUTH_GITHUB_ID={{.U.AUTH_GITHUB_ID}}
+      - AUTH_GITHUB_SECRET={{.U.AUTH_GITHUB_SECRET}}
+      - AUTH_GOOGLE_ID={{.U.AUTH_GOOGLE_ID}}
+      - AUTH_GOOGLE_SECRET={{.U.AUTH_GOOGLE_SECRET}}
+
+      # User allowlist (comma-separated emails). Leave blank for open access.
+      - USER_BLACKLIST=
+
+      # Disabled features
+      - STRIPE_API_KEY=
+      - STRIPE_WEBHOOK_SECRET=
+      - AXIOM_TOKEN=
+    binds:
+      - /lzcapp/var/data:/lzcapp/var/data
+      - /lzcapp/var/logs:/lzcapp/var/logs
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 90s
+    depends_on:
+      - redis-http
+
+  redis-http:
+    image: registry.lazycat.cloud/lee/hiett/serverless-redis-http:43935e81cef4c3b4
+    environment:
+      - SRH_MODE=env
+      - SRH_TOKEN={{stable_secret "SRH_TOKEN"}}
+      - SRH_CONNECTION_STRING=redis://:{{stable_secret "REDIS_PASSWORD"}}@redis:6379/0
+    depends_on:
+      - redis
+
+  redis:
+    image: registry.lazycat.cloud/lee/library/redis:ef2791ca3ea21111
+    command: >
+      redis-server
+      --save 60 1
+      --appendonly yes
+      --appendfsync everysec
+      --requirepass {{stable_secret "REDIS_PASSWORD"}}
+    environment:
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/redis:/data
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - -a
+        - '{{stable_secret "REDIS_PASSWORD"}}'
+        - ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s

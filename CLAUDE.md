@@ -3,6 +3,15 @@
 A 懒猫微服 (LazyCat) wrapper for [MemFree](https://github.com/memfreeme/memfree),
 a self-hosted Hybrid AI Search Engine.
 
+## Lazycat appstore identifiers
+
+- **package id**: `cloud.lazycat.app.memfree`
+- **app_id**: `5360` (recorded 2026-05-08)
+- **subdomain**: `memfree` → `https://memfree.<box-domain>`
+- **bootstrap workflow**: when re-running `bootstrap-app.yml` to
+  resubmit a fix, pass `app_id=5360` so the workflow skips
+  `/app/create` (which would 500 on duplicate package).
+
 ## Architecture
 
 Three lazycat services in this stack:

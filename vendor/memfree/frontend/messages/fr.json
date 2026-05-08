@@ -1,0 +1,149 @@
+{
+    "HomePage": {
+        "hero": "Débloquez des réponses précises plus rapidement",
+        "hero-product": "Votez pour MemFree pour une réduction de 20 % !",
+        "hero-h1": "Recherche hybride IA - obtenez des réponses précises plus rapidement",
+        "hero2": "Recherche hybride IA à partir de la base de connaissances et d'Internet"
+    },
+    "MetaDate": {
+        "title": "MemFree - Recherche hybride IA",
+        "name": "MemFree",
+        "description": "MemFree - Recherche hybride IA à partir de la base de connaissances et d'Internet, obtenez des réponses précises plus rapidement"
+    },
+    "Pricing": {
+        "title": "Tarification de MemFree",
+        "description": "Obtenez un accès illimité maintenant",
+        "Free1": "Jusqu'à 5 recherches IA de base par jour",
+        "Free8": "5 générations de pages UI AI par jour",
+        "Free2": "Jusqu'à 10 signets et pages web à indexer",
+        "Free3": "Jusqu'à 1024 tokens de sortie par réponse",
+        "Free4": "Jusqu'à 4 Mo pour un fichier unique et une image à demander",
+        "Free5": "Enregistrez jusqu'à 100 historiques de recherche",
+        "Free6": "Support pour le modèle IA GPT-4o-mini",
+        "Free7": "Support pour l'extension Web et Chrome",
+        "Pro1": "Recherches IA de base illimitées par mois",
+        "Pro2": "Jusqu'à 1000 recherches IA expertes par mois",
+        "Pro11": "Jusqu'à 500 générations de pages UI AI par mois",
+        "Pro3": "Jusqu'à 1000 signets et pages web à indexer",
+        "Pro4": "Jusqu'à 4096 tokens de sortie par réponse",
+        "Pro5": "Jusqu'à 20 Mo pour un fichier unique et une image à demander",
+        "Pro10": "Téléchargez plusieurs images à la fois",
+        "Pro6": "Sauvegarde illimitée de l'historique de recherche",
+        "Pro7": "Prend en charge le modèle d'IA GPT-4o, O1-mini, Gemini-Pro, Claude-3.5-Sonnet",
+        "Pro8": "Support pour la recherche continue basée sur le contexte",
+        "Pro9": "Support pour le réajustement afin d'obtenir de meilleurs résultats de recherche",
+        "Premium1": "Recherches IA de base illimitées par mois",
+        "Premium2": "3000 recherches AI expertes par mois",
+        "Premium9": "3000 générations de pages UI AI par mois",
+        "Premium3": "Signets et pages web illimités à indexer",
+        "Premium4": "Sauvegarde illimitée de l'historique de recherche",
+        "Premium5": "Jusqu'à 50 Mo pour un fichier unique à demander",
+        "Premium6": "Jusqu'à 16384 tokens de sortie par réponse",
+        "Premium7": "Support client prioritaire",
+        "Premium8": "Prend en charge le modèle d'IA O1-preview",
+        "free-call": "Continuer avec la version gratuite",
+        "pre-call": "S'abonner",
+        "pre-once-call": "Payer une fois",
+        "paid-call": "Gérer l'abonnement",
+        "upgrade-call": "Débloquez des fonctionnalités avancées avec MemFree Pro",
+        "upgrade-button": "Mettre à niveau maintenant",
+        "Reminder": "Si vous ne trouvez pas de méthode de paiement préférée dans les options d'abonnement, envisagez d'utiliser l'option de paiement unique, qui offre plus de méthodes de paiement."
+    },
+    "PricingFAQ": {
+        "title": "Questions Fréquemment Posées",
+        "question1": "Pourquoi MemFree pourrait-il rationaliser votre gestion des connaissances",
+        "answer1": "Pas besoin d'organiser manuellement votre base de connaissances (notes, signets et documents). Lorsque vous avez besoin d'informations ou de réponses, il vous suffit de rechercher dans MemFree en un clic, libérant ainsi votre capacité de mémoire et améliorant votre productivité.",
+        "question2": "Pourquoi MemFree peut-il vous faire gagner du temps et améliorer votre efficacité",
+        "answer2": "Pas besoin de cliquer sur plusieurs pages web une par une dans les résultats de recherche Google. MemFree utilise l'IA pour résumer immédiatement les meilleures réponses de plusieurs pages web et de votre base de connaissances, vous faisant gagner beaucoup de temps chaque jour.",
+        "question3": "Pourquoi MemFree est-il une solution rentable",
+        "answer3": "Pas besoin de s'abonner à plusieurs outils d'IA tels que ChatGPT Plus, Claude Pro et Gemini Advanced, ce qui réduira considérablement vos frais d'abonnement mensuels.",
+        "question4": "Comment nous contacter ?",
+        "answer4": "Si vous rencontrez des problèmes de paiement ou d'abonnement, veuillez nous contacter par email à support@memfree.me ou via https://www.memfree.me/feedback"
+    },
+    "DemoQuestions": {
+        "title1": "Comparer, résumer, rechercher plusieurs images",
+        "title2": "Rechercher et demander par image",
+        "title3": "Rechercher et poser des questions sur Product Hunt",
+        "title4": "Résumer et poser des questions sur une page web et un PDF",
+        "title5": "Qu'est-ce que la recherche IA de MemFree ?",
+        "title6": "Rechercher et poser des questions sur Twitter",
+        "title7": "Expliquer et écrire du code"
+    },
+    "SearchBar": {
+        "index-button": "Indexer",
+        "attach-button": "Joindre",
+        "index-tip": "Indexer les pages web et les fichiers locaux",
+        "attach-tip": "Joindre une image et un fichier à demander",
+        "image-tip": "Generate UI Page from Image",
+        "search-tip": "Appuyez sur Entrée pour envoyer, Maj + Entrée pour un retour à la ligne"
+    },
+    "IndexModal": {
+        "title": "Améliorez vos résultats de recherche avec l'indexation IA",
+        "note": "Il faut environ quelques secondes pour indexer une page web ou un fichier local.",
+        "web-page": "Page Web",
+        "local-file": "Fichier Local"
+    },
+    "IndexWeb": {
+        "placeholder": "Veuillez entrer l'URL des pages web publiques que vous appréciez. Memfree vous permettra de rechercher le contenu de ces pages par IA.",
+        "index-button": "Indexer la page web",
+        "index-extension": "Indexer la page web par l'extension Chrome ou Edge",
+        "extension-note": "Extension de navigateur pour une indexation plus rapide et de meilleure qualité"
+    },
+    "IndexLocal": {
+        "note": "Faites glisser et déposez des fichiers ici, ou cliquez pour sélectionner des fichiers"
+    },
+    "Attach": {
+        "size-limit": "Le fichier que vous avez téléchargé dépasse la limite maximale de 4 Mo. Veuillez mettre à niveau votre plan pour des téléchargements de fichiers plus volumineux.",
+        "number-limit-1": "L'utilisateur gratuit peut télécharger un fichier à la fois, veuillez mettre à niveau votre plan",
+        "image-limit-5": "Impossible de télécharger plus de 5 fichiers image locaux à la fois. Fournissez des commentaires si un soutien supplémentaire est nécessaire.",
+        "file-limit-1": "Impossible de télécharger plus d'un fichier texte local à la fois. Fournissez des commentaires si un soutien supplémentaire est nécessaire.",
+        "loading": "Téléchargement du fichier... Vous pouvez maintenant taper votre question",
+        "success": "Fichiers téléchargés avec succès",
+        "error": "Échec du téléchargement"
+    },
+    "Source": {
+        "Hybrid": "Hybride",
+        "Knowledge": "Base de Connaissances",
+        "Academic": "Académique",
+        "Twitter": "Twitter"
+    },
+    "SearchMessage": {
+        "Answer": "Réponse",
+        "Sources": "Sources",
+        "Images": "Images",
+        "Videos": "Vidéos",
+        "MindMap": "Carte Mentale",
+        "Related": "Lié"
+    },
+    "ActionButtons": {
+        "Copy": "Copier la réponse",
+        "Reload": "Recharger",
+        "Feedback": "Retour d'information",
+        "Share": "Partager"
+    },
+    "Question": {
+        "title": "Modifier la question",
+        "Cancel": "Annuler",
+        "Search": "Rechercher"
+    },
+    "Search": {
+        "summarize": "Résumer",
+        "read-only-error": "Vous ne pouvez pas rechercher de questions dans la page de recherche partagée",
+        "msg-length-sign-in": "Connectez-vous pour rechercher plus de questions dans un fil",
+        "msg-length-pro": "Mettez à niveau vers Pro pour rechercher plus de questions dans un fil",
+        "msg-length-all": "Nombre maximum de questions atteint dans un fil. Veuillez commencer un nouveau fil",
+        "free-search-limit": "L'utilisateur gratuit peut rechercher 10 questions par jour. Veuillez mettre à niveau votre plan",
+        "multi-image-free-limit": "Veuillez mettre à niveau vers Pro pour joindre plusieurs images dans un message",
+        "multi-image-pro-limit": "Joindre jusqu'à 5 images par message. Fournissez des commentaires si un soutien supplémentaire est nécessaire",
+        "status-think": "Réflexion...",
+        "search-error": "Une erreur s'est produite lors de la recherche, veuillez actualiser votre page et réessayer"
+    },
+    "Share": {
+        "title": "Partager la recherche via un lien",
+        "description": "Quiconque possède l'URL peut voir la recherche partagée.",
+        "copy-error": "Échec de la copie du lien de partage dans le presse-papiers. Veuillez réessayer.",
+        "copy-success": "Lien de partage copié dans le presse-papiers",
+        "copying": "Copie en cours...",
+        "copy-button": "Copier le lien"
+    }
+}

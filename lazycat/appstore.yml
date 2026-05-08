@@ -8,7 +8,7 @@ support_mobile: true
 screenshots:
   pc:
     - lazycat/screenshots/01-home.png
-    - lazycat/screenshots/02-search.png
+    - lazycat/screenshots/02-login.png
   mobile: []
 
 description:

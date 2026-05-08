@@ -2,8 +2,8 @@ params:
   - id: OPENAI_API_KEY
     type: password
     name: "OpenAI API Key"
-    description: "OpenAI 兼容的 API Key（用于嵌入与默认对话模型）。可填 OpenAI 官方 key 或任意兼容服务的 key。"
-    optional: false
+    description: "OpenAI 兼容的 API Key（用于嵌入与默认对话模型）。可填 OpenAI 官方 key 或任意兼容服务的 key。可在安装后到设置中再填。"
+    optional: true
 
   - id: OPENAI_BASE_URL
     type: string

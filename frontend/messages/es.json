@@ -1,0 +1,149 @@
+{
+    "HomePage": {
+        "hero": "Desbloquea respuestas precisas más rápido",
+        "hero-product": "¡Vota por MemFree para un descuento del 20 %!",
+        "hero-h1": "Búsqueda híbrida de IA - obtén respuestas precisas más rápido",
+        "hero2": "Búsqueda híbrida de IA desde la base de conocimientos y la Internet"
+    },
+    "MetaDate": {
+        "title": "MemFree - Búsqueda híbrida de IA",
+        "name": "MemFree",
+        "description": "MemFree - Búsqueda híbrida de IA desde la base de conocimientos y la Internet, obtén respuestas precisas más rápido"
+    },
+    "Pricing": {
+        "title": "Precios de MemFree",
+        "description": "Obtén acceso ilimitado ahora",
+        "Free1": "Hasta 5 búsquedas básicas de IA por día",
+        "Free8": "5 generación de páginas UI de IA por día",
+        "Free2": "Hasta 10 marcadores y páginas web para indexar",
+        "Free3": "Hasta 1024 tokens de salida por respuesta",
+        "Free4": "Hasta 4MB para un solo archivo e imagen para preguntar",
+        "Free5": "Guarda hasta 100 historiales de búsqueda",
+        "Free6": "Soporte para el modelo de IA GPT-4o-mini",
+        "Free7": "Soporte para extensión web y Chrome",
+        "Pro1": "Búsquedas básicas de IA ilimitadas por mes",
+        "Pro2": "Hasta 1000 búsquedas de IA expertas por mes",
+        "Pro11": "Hasta 500 generación de páginas UI de IA por mes",
+        "Pro3": "Hasta 1000 marcadores y páginas web para indexar",
+        "Pro4": "Hasta 4096 tokens de salida por respuesta",
+        "Pro5": "Hasta 20MB para un solo archivo e imagen para preguntar",
+        "Pro10": "Sube múltiples imágenes a la vez",
+        "Pro6": "Guardado ilimitado del historial de búsqueda",
+        "Pro7": "Soporta el modelo de IA GPT-4o, O1-mini, Gemini-Pro, Claude-3.5-Sonnet",
+        "Pro8": "Soporte para búsqueda continua basada en contexto",
+        "Pro9": "Soporte para reordenar para obtener mejores resultados de búsqueda",
+        "Premium1": "Búsquedas básicas de IA ilimitadas por mes",
+        "Premium2": "3000 búsquedas de IA expertas por mes",
+        "Premium9": "3000 generación de páginas UI de IA por mes",
+        "Premium3": "Marcadores y páginas web ilimitadas para indexar",
+        "Premium4": "Guardado ilimitado del historial de búsqueda",
+        "Premium5": "Hasta 50MB para un solo archivo para preguntar",
+        "Premium6": "Hasta 16384 tokens de salida por respuesta",
+        "Premium7": "Soporte prioritario al cliente",
+        "Premium8": "Soporta el modelo de IA O1-preview",
+        "free-call": "Continuar con la versión gratuita",
+        "pre-call": "Suscribirse",
+        "pre-once-call": "Pagar una vez",
+        "paid-call": "Gestionar suscripción",
+        "upgrade-call": "Desbloquear funciones avanzadas con MemFree Pro",
+        "upgrade-button": "Actualizar ahora",
+        "Reminder": "Si no encuentra un método de pago preferido en las opciones de suscripción, considere usar la opción de pago único, que ofrece más métodos de pago."
+    },
+    "PricingFAQ": {
+        "title": "Preguntas Frecuentes",
+        "question1": "¿Por qué MemFree podría optimizar la gestión de su conocimiento?",
+        "answer1": "No es necesario organizar manualmente su base de conocimientos (notas, marcadores y documentos). Cuando necesite información o respuestas, simplemente busque en MemFree con un clic, liberando su capacidad de memoria y mejorando su productividad.",
+        "question2": "¿Por qué MemFree puede ahorrarle tiempo y mejorar su eficiencia?",
+        "answer2": "No es necesario hacer clic en múltiples páginas web una por una en los resultados de búsqueda de Google. MemFree utiliza IA para resumir inmediatamente las mejores respuestas de múltiples páginas web y su base de conocimientos, ahorrándole mucho tiempo cada día.",
+        "question3": "¿Por qué MemFree es una solución rentable?",
+        "answer3": "No es necesario suscribirse a múltiples herramientas de IA como ChatGPT Plus, Claude Pro y Gemini Advanced, lo que reducirá significativamente sus tarifas de suscripción mensual.",
+        "question4": "¿Cómo contactarnos?",
+        "answer4": "Si experimenta algún problema con el pago o la suscripción, por favor contáctenos por correo electrónico a support@memfree.me o a través de https://www.memfree.me/feedback"
+    },
+    "DemoQuestions": {
+        "title1": "Comparar, resumir, buscar múltiples imágenes",
+        "title2": "Buscar y preguntar por imagen",
+        "title3": "Buscar y hacer preguntas sobre Product Hunt",
+        "title4": "Resumir y preguntar sobre páginas web y PDF",
+        "title5": "¿Qué es la búsqueda de IA de MemFree?",
+        "title6": "Buscar y preguntar sobre preguntas de Twitter",
+        "title7": "Explicar y escribir código"
+    },
+    "SearchBar": {
+        "index-button": "Indexar",
+        "attach-button": "Adjuntar",
+        "index-tip": "Indexar páginas web y archivos locales",
+        "attach-tip": "Adjuntar imagen y archivo para preguntar",
+        "image-tip": "Generate UI Page from Image",
+        "search-tip": "Presiona Enter para enviar, Shift + Enter para saltar"
+    },
+    "IndexModal": {
+        "title": "Mejora tus resultados de búsqueda con indexación de IA",
+        "note": "Toma unos segundos indexar una página web o un archivo local.",
+        "web-page": "Página web",
+        "local-file": "Archivo local"
+    },
+    "IndexWeb": {
+        "placeholder": "Por favor, ingresa la URL de las páginas web públicas que valoras. Memfree te permitirá buscar el contenido de estas páginas mediante IA.",
+        "index-button": "Indexar página web",
+        "index-extension": "Indexar página web mediante la extensión de Chrome o Edge",
+        "extension-note": "Extensión del navegador para una indexación más rápida y mejor calidad"
+    },
+    "IndexLocal": {
+        "note": "Arrastra y suelta archivos aquí, o haz clic para seleccionar archivos"
+    },
+    "Attach": {
+        "size-limit": "El archivo que subiste excede el límite máximo de 4MB. Por favor, actualiza tu plan para subir archivos más grandes.",
+        "number-limit-1": "El usuario gratuito puede subir un archivo a la vez, por favor actualiza tu plan",
+        "image-limit-5": "No se pueden subir más de 5 archivos de imagen locales a la vez. Proporciona comentarios si necesitas más apoyo.",
+        "file-limit-1": "No se puede subir más de 1 archivo de texto local a la vez. Proporciona comentarios si necesitas más apoyo.",
+        "loading": "Subiendo archivo... Ahora puedes escribir tu pregunta",
+        "success": "Archivos subidos con éxito",
+        "error": "Error al subir"
+    },
+    "Source": {
+        "Hybrid": "Híbrido",
+        "Knowledge": "Base de Conocimientos",
+        "Academic": "Académico",
+        "Twitter": "Twitter"
+    },
+    "SearchMessage": {
+        "Answer": "Respuesta",
+        "Sources": "Fuentes",
+        "Images": "Imágenes",
+        "Videos": "Videos",
+        "MindMap": "Mapa Mental",
+        "Related": "Relacionado"
+    },
+    "ActionButtons": {
+        "Copy": "Copiar respuesta",
+        "Reload": "Recargar",
+        "Feedback": "Comentarios",
+        "Share": "Compartir"
+    },
+    "Question": {
+        "title": "Editar pregunta",
+        "Cancel": "Cancelar",
+        "Search": "Buscar"
+    },
+    "Search": {
+        "summarize": "Resumir",
+        "read-only-error": "No puedes buscar preguntas en la página de búsqueda compartida",
+        "msg-length-sign-in": "Inicia sesión para buscar más preguntas en un hilo",
+        "msg-length-pro": "Actualiza a Pro para buscar más preguntas en un hilo",
+        "msg-length-all": "Se alcanzó el número máximo de preguntas en un hilo. Por favor, inicia un nuevo hilo",
+        "free-search-limit": "El usuario gratuito puede buscar 10 preguntas por día. Por favor, actualiza tu plan",
+        "multi-image-free-limit": "Por favor, actualiza a Pro para adjuntar múltiples imágenes en un mensaje",
+        "multi-image-pro-limit": "Adjunta hasta 5 imágenes por mensaje. Proporciona comentarios si necesitas más apoyo",
+        "status-think": "Pensando...",
+        "search-error": "Ocurrió un error al buscar, por favor actualiza tu página e intenta de nuevo"
+    },
+    "Share": {
+        "title": "Compartir búsqueda a través de enlace",
+        "description": "Cualquiera con la URL puede ver la búsqueda compartida.",
+        "copy-error": "Error al copiar el enlace compartido al portapapeles. Por favor, intenta de nuevo.",
+        "copy-success": "Enlace compartido copiado al portapapeles",
+        "copying": "Copiando...",
+        "copy-button": "Copiar enlace"
+    }
+}

@@ -1,0 +1,146 @@
+{
+    "HomePage": {
+        "hero": "更快解锁准确答案",
+        "hero-h1": "混合AI搜索 - 更快获取准确答案",
+        "hero-product": "为 MemFree 投票，享受20%折扣!",
+        "hero2": "来自知识库和互联网的混合AI搜索"
+    },
+    "MetaDate": {
+        "title": "MemFree - 混合AI搜索",
+        "name": "MemFree",
+        "description": "MemFree - 来自知识库和互联网的混合AI搜索，更快获取准确答案"
+    },
+    "Pricing": {
+        "title": "MemFree定价",
+        "description": "立即获取无限访问权限",
+        "Free1": "每天5次基础AI搜索",
+        "Free8": "每天5次 AI UI Page 生成",
+        "Free2": "最多10个书签和网页进行索引",
+        "Free3": "每个答案最多1024个token输出",
+        "Free4": "单个文件和图像最多4MB",
+        "Free5": "保存最多100条搜索历史",
+        "Free6": "支持 GPT-4o-mini AI 模型",
+        "Free7": "支持网页和Chrome扩展",
+        "Pro1": "每月 500 次 AI搜索",
+        "Pro11": "每月 500 次 AI UI Page 生成",
+        "Pro3": "最多1000个书签和网页进行索引",
+        "Pro4": "每个答案最多4096个token输出",
+        "Pro5": "单个文件和图像最多 20MB",
+        "Pro10": "一次上传多个图像",
+        "Pro6": "5000 条搜索历史",
+        "Pro7": "支持 GPT-4o, O1-mini, Claude-3.5-Sonnet AI 模型",
+        "Pro8": "支持基于上下文的连续搜索",
+        "Pro9": "支持重新排序以获得更好的搜索结果",
+        "Premium1": "每月3000次 AI 搜索",
+        "Premium9": "每月3000次 AI UI Page 生成",
+        "Premium3": "10000 个 书签和网页进行索引",
+        "Premium4": "20000 条搜索历史",
+        "Premium5": "单个文件最多50MB",
+        "Premium6": "每个答案最多16384个token输出",
+        "Premium8": "支持 O1-preview AI 模型",
+        "free-call": "继续使用免费版",
+        "pre-call": "订阅",
+        "pre-once-call": "一次性支付",
+        "paid-call": "管理订阅",
+        "upgrade-call": "通过 MemFree Pro 解锁高级功能",
+        "upgrade-button": "立即升级",
+        "Reminder": "一次性支付支持微信和支付宝支付"
+    },
+    "PricingFAQ": {
+        "title": "常见问题解答",
+        "question1": "为什么 MemFree 能简化您的知识管理",
+        "answer1": "无需手动组织您的知识库（笔记、书签和文档）。当您需要信息或答案时，只需在 MemFree 中一键搜索，释放您的记忆容量，提高您的生产力。",
+        "question2": "为什么 MemFree 能为您节省时间并提高效率",
+        "answer2": "无需在 Google 搜索结果中逐个点击多个网页。MemFree 使用 AI 即时总结多个网页和您的知识库中的最佳答案，每天为您节省大量时间。",
+        "question3": "为什么 MemFree 是一种具有成本效益的解决方案",
+        "answer3": "无需订阅多个 AI 工具，如 ChatGPT Plus、Claude Pro 和 Gemini Advanced，这将显著降低您的月度订阅费用。",
+        "question4": "如何联系我们？",
+        "answer4": "如果您在支付或订阅方面遇到任何问题，请通过电子邮件 support@memfree.me 或通过 https://www.memfree.me/feedback 联系我们。"
+    },
+    "DemoQuestions": {
+        "title1": "比较、总结、搜索多个图像",
+        "title2": "通过图像搜索和提问",
+        "title3": "搜索和提问 Product Hunt 问题",
+        "title4": "总结和提问网页和PDF",
+        "title5": "什么是 MemFree AI搜索",
+        "title6": "搜索和提问 Twitter 问题",
+        "title7": "解释和编写代码"
+    },
+    "SearchBar": {
+        "index-button": "索引",
+        "attach-button": "附加",
+        "index-tip": "索引网页和本地文件",
+        "attach-tip": "附加本地图像和文件进行提问",
+        "image-tip": "根据图像生成 UI 页面",
+        "search-tip": "按 Enter 发送，Shift + Enter 换行"
+    },
+    "IndexModal": {
+        "title": "通过AI索引增强您的搜索结果",
+        "note": "索引网页或本地文件大约需要几秒钟。",
+        "web-page": "网页",
+        "local-file": "本地文件"
+    },
+    "IndexWeb": {
+        "placeholder": "请输入您重视的公共网页的URL。Memfree将让您通过AI搜索这些页面的内容。",
+        "index-button": "索引网页",
+        "index-extension": "通过 Chrome 或 Edge 扩展索引网页",
+        "extension-note": "浏览器扩展以更快的索引和更好的质量"
+    },
+    "IndexLocal": {
+        "note": "将文件拖放到此处，或单击选择文件"
+    },
+    "Attach": {
+        "size-limit": "您上传的文件超过4MB的最大限制。请升级您的计划以进行更大的文件上传。",
+        "number-limit-1": "免费用户每次只能上传一个文件，请升级您的计划",
+        "image-limit-5": "一次不能上传超过5个本地图像文件。如果需要更多支持，请提供反馈。",
+        "file-limit-1": "一次不能上传超过1个本地文本文件。如果需要更多支持，请提供反馈。",
+        "loading": "正在上传文件... 您现在可以输入问题",
+        "success": "文件上传成功",
+        "error": "上传失败"
+    },
+    "Source": {
+        "Hybrid": "混合",
+        "Knowledge": "知识库",
+        "Academic": "学术",
+        "Twitter": "Twitter"
+    },
+    "SearchMessage": {
+        "Answer": "答案",
+        "Sources": "来源",
+        "Images": "图像",
+        "Videos": "视频",
+        "MindMap": "思维导图",
+        "Related": "相关"
+    },
+    "ActionButtons": {
+        "Copy": "复制答案",
+        "Reload": "重新加载",
+        "Feedback": "反馈",
+        "Share": "分享"
+    },
+    "Question": {
+        "title": "编辑问题",
+        "Cancel": "取消",
+        "Search": "搜索"
+    },
+    "Search": {
+        "summarize": "总结",
+        "read-only-error": "您无法在共享搜索页面中搜索问题",
+        "msg-length-sign-in": "登录以在一个线程中搜索更多问题",
+        "msg-length-pro": "升级到Pro以在一个线程中搜索更多问题",
+        "msg-length-all": "在一个线程中达到最大问题数量。请开始一个新线程",
+        "free-search-limit": "免费用户每天可以搜索10个问题。请升级您的计划",
+        "multi-image-free-limit": "请升级到Pro以在一条消息中附加多个图像",
+        "multi-image-pro-limit": "每条消息最多附加5个图像。如果需要更多支持，请提供反馈",
+        "status-think": "思考中...",
+        "search-error": "搜索时发生错误，请刷新页面重试"
+    },
+    "Share": {
+        "title": "通过链接分享搜索",
+        "description": "任何拥有URL的人都可以查看共享的搜索。",
+        "copy-error": "无法将共享链接复制到剪贴板。请重试。",
+        "copy-success": "共享链接已复制到剪贴板",
+        "copying": "正在复制...",
+        "copy-button": "复制链接"
+    }
+}

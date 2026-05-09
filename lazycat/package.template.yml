@@ -5,6 +5,11 @@ description: 自托管 Hybrid AI 搜索引擎 — 知识库 + 联网检索 + AI 
 author: MemFree
 license: MIT
 homepage: https://github.com/microlazy-apps/lazy-memfree
+
+unsupported_platforms:
+  - ios
+  - android
+
 locales:
   zh-CN:
     name: MemFree

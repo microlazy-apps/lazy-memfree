@@ -1,5 +1,6 @@
 application:
   subdomain: memfree
+  oidc_redirect_path: /api/auth/callback/lazycat
   upstreams:
     - location: /
       backend: http://main:80
@@ -15,6 +16,20 @@ services:
     image: ${LAZYCAT_IMAGE}
     environment:
       - TZ=Asia/Shanghai
+
+      # Lazycat OIDC — auto-injected by the platform when oidc_redirect_path
+      # is set above. next-auth (frontend/auth.ts) registers a 'lazycat'
+      # provider whenever all five vars are non-empty.
+      - LAZYCAT_AUTH_OIDC_CLIENT_ID=${LAZYCAT_AUTH_OIDC_CLIENT_ID}
+      - LAZYCAT_AUTH_OIDC_CLIENT_SECRET=${LAZYCAT_AUTH_OIDC_CLIENT_SECRET}
+      - LAZYCAT_AUTH_OIDC_AUTH_URI=${LAZYCAT_AUTH_OIDC_AUTH_URI}
+      - LAZYCAT_AUTH_OIDC_TOKEN_URI=${LAZYCAT_AUTH_OIDC_TOKEN_URI}
+      - LAZYCAT_AUTH_OIDC_USERINFO_URI=${LAZYCAT_AUTH_OIDC_USERINFO_URI}
+      - LAZYCAT_APP_DOMAIN=${LAZYCAT_APP_DOMAIN}
+      # next-auth needs to know its public origin to mint correct callback
+      # URLs. ${LAZYCAT_APP_DOMAIN} resolves to memfree.<box-domain>.
+      - AUTH_URL=https://${LAZYCAT_APP_DOMAIN}
+      - AUTH_TRUST_HOST=true
 
       # Vector + frontend internal wiring (loopback inside this container)
       - VECTOR_HOST=http://127.0.0.1:3001

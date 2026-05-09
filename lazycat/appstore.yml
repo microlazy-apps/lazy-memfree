@@ -3,7 +3,7 @@ source_author: memfreeme
 is_original: false
 keywords: ai-search,hybrid-search,rag,knowledge-base,vector-search,lancedb,upstash-redis,openai,claude,gemini
 support_pc: true
-support_mobile: true
+support_mobile: false
 
 screenshots:
   pc:

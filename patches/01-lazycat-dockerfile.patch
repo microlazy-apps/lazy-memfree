@@ -25,10 +25,10 @@ index 0000000..f30b059
 +**/__tests__
 diff --git a/Dockerfile b/Dockerfile
 new file mode 100644
-index 0000000..2a1d279
+index 0000000..02ec9b0
 --- /dev/null
 +++ b/Dockerfile
-@@ -0,0 +1,76 @@
+@@ -0,0 +1,77 @@
 +# syntax=docker/dockerfile:1
 +ARG BUN_VERSION=1.1.34
 +FROM oven/bun:${BUN_VERSION}-slim AS base
@@ -64,6 +64,7 @@ index 0000000..2a1d279
 +    API_TOKEN="placeholder" \
 +    AUTH_SECRET="placeholder" \
 +    OPENAI_API_KEY="placeholder" \
++    NEXT_PUBLIC_LAZYCAT_OIDC_ENABLED="1" \
 +    SKIP_ENV_VALIDATION=1
 +RUN bun run build
 +
@@ -105,6 +106,109 @@ index 0000000..2a1d279
 +
 +EXPOSE 80
 +ENTRYPOINT ["/usr/bin/tini","--","/app/lazycat-entrypoint.sh"]
+diff --git a/frontend/auth.ts b/frontend/auth.ts
+index d2b5bb1..97b2fd8 100644
+--- a/frontend/auth.ts
++++ b/frontend/auth.ts
+@@ -10,6 +10,50 @@ import { sendVerificationRequest } from '@/lib/auth/auth-send-request';
+ import { NEXT_PUBLIC_APP_URL } from '@/lib/env';
+ import { NODE_ENV } from '@/lib/env';
+ 
++// Lazycat MicroServer OIDC. The platform injects these env vars whenever
++// `application.oidc_redirect_path` is set in the lzc-manifest.yml. They are
++// empty in any other build (e.g. Vercel), so the provider is opt-in.
++const LAZYCAT_OIDC_CLIENT_ID = process.env.LAZYCAT_AUTH_OIDC_CLIENT_ID || '';
++const LAZYCAT_OIDC_CLIENT_SECRET = process.env.LAZYCAT_AUTH_OIDC_CLIENT_SECRET || '';
++const LAZYCAT_OIDC_AUTH_URI = process.env.LAZYCAT_AUTH_OIDC_AUTH_URI || '';
++const LAZYCAT_OIDC_TOKEN_URI = process.env.LAZYCAT_AUTH_OIDC_TOKEN_URI || '';
++const LAZYCAT_OIDC_USERINFO_URI = process.env.LAZYCAT_AUTH_OIDC_USERINFO_URI || '';
++export const LAZYCAT_OIDC_ENABLED = Boolean(
++    LAZYCAT_OIDC_CLIENT_ID && LAZYCAT_OIDC_CLIENT_SECRET && LAZYCAT_OIDC_AUTH_URI && LAZYCAT_OIDC_TOKEN_URI && LAZYCAT_OIDC_USERINFO_URI,
++);
++
++interface LazycatProfile {
++    sub: string;
++    name?: string;
++    preferred_username?: string;
++    email?: string;
++    picture?: string;
++    avatar?: string;
++}
++
++const lazycatProvider = {
++    id: 'lazycat',
++    name: 'Lazycat',
++    type: 'oauth' as const,
++    authorization: {
++        url: LAZYCAT_OIDC_AUTH_URI,
++        params: { scope: 'openid profile email' },
++    },
++    token: { url: LAZYCAT_OIDC_TOKEN_URI },
++    userinfo: { url: LAZYCAT_OIDC_USERINFO_URI },
++    clientId: LAZYCAT_OIDC_CLIENT_ID,
++    clientSecret: LAZYCAT_OIDC_CLIENT_SECRET,
++    checks: ['state' as const],
++    profile(profile: LazycatProfile) {
++        return {
++            id: profile.sub,
++            name: profile.name || profile.preferred_username || profile.email || profile.sub,
++            email: profile.email ?? null,
++            image: profile.picture || profile.avatar || null,
++        };
++    },
++};
++
+ declare module 'next-auth' {
+     interface Session {
+         user: {
+@@ -34,6 +78,7 @@ export const config = {
+         strategy: 'jwt',
+     },
+     providers: [
++        ...(LAZYCAT_OIDC_ENABLED ? [lazycatProvider] : []),
+         GitHub,
+         Google,
+         Resend({
+diff --git a/frontend/components/layout/sign-in-group.tsx b/frontend/components/layout/sign-in-group.tsx
+index 74bd3f3..4247afd 100644
+--- a/frontend/components/layout/sign-in-group.tsx
++++ b/frontend/components/layout/sign-in-group.tsx
+@@ -10,6 +10,11 @@ import { siteConfig } from '@/config';
+ import { EmailForm } from '@/components/email-form';
+ import Image from 'next/image';
+ 
++// Lazycat OIDC presence is decided at build time. Inlined as a public env so
++// the button renders only when the lazycat platform actually injected the
++// credentials (set via lzc-manifest.yml `application.oidc_redirect_path`).
++const LAZYCAT_OIDC_ENABLED = process.env.NEXT_PUBLIC_LAZYCAT_OIDC_ENABLED === '1';
++
+ export function SignInGroup() {
+     const [signInClicked, setSignInClicked] = useState(false);
+     return (
+@@ -23,6 +28,23 @@ export function SignInGroup() {
+             </div>
+ 
+             <div className="flex flex-col space-y-4 p-4">
++                {LAZYCAT_OIDC_ENABLED && (
++                    <Button
++                        variant="default"
++                        disabled={signInClicked}
++                        data-umami-event="Sign In Lazycat"
++                        onClick={() => {
++                            setSignInClicked(true);
++                            signIn('lazycat', { callbackUrl: '/' }).then(() => {
++                                setSignInClicked(false);
++                            });
++                        }}
++                        aria-label={signInClicked ? 'Signing in with Lazycat' : 'Sign in with Lazycat'}
++                    >
++                        {signInClicked && <Icons.spinner className="mr-2 size-4 animate-spin" />} 用懒猫账号登录
++                    </Button>
++                )}
++
+                 <Button
+                     variant="outline"
+                     disabled={signInClicked}
 diff --git a/lazycat-entrypoint.sh b/lazycat-entrypoint.sh
 new file mode 100644
 index 0000000..53ae745

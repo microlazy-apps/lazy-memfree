@@ -211,10 +211,10 @@ index 74bd3f3..4247afd 100644
                      disabled={signInClicked}
 diff --git a/lazycat-entrypoint.sh b/lazycat-entrypoint.sh
 new file mode 100644
-index 0000000..53ae745
+index 0000000..5ff75da
 --- /dev/null
 +++ b/lazycat-entrypoint.sh
-@@ -0,0 +1,43 @@
+@@ -0,0 +1,34 @@
 +#!/usr/bin/env bash
 +set -euo pipefail
 +
@@ -229,21 +229,12 @@ index 0000000..53ae745
 +ln -sfn "${PERSIST_DIR}/lancedb" /app/vector/data
 +mkdir -p /app/vector/data
 +
-+# Wait for redis-http (if configured) so the frontend's @upstash/redis
-+# client and next-auth adapter don't immediately crash on cold start.
-+if [[ -n "${UPSTASH_REDIS_REST_URL:-}" ]]; then
-+  TARGET="${UPSTASH_REDIS_REST_URL%/}/ping"
-+  echo "[entrypoint] Waiting for upstash REST emulator at ${UPSTASH_REDIS_REST_URL}..."
-+  for i in $(seq 1 60); do
-+    if curl -fsS -m 2 -o /dev/null \
-+         -H "Authorization: Bearer ${UPSTASH_REDIS_REST_TOKEN:-}" \
-+         "${TARGET}"; then
-+      echo "[entrypoint] Upstash REST emulator is reachable."
-+      break
-+    fi
-+    sleep 2
-+  done
-+fi
++# Don't block on redis-http here. SRH does not expose a 200-on-GET liveness
++# endpoint (`/ping` returns 404; the protocol uses POST `/` with a JSON
++# command array), so any naive wait loop just churns until the lazycat
++# health-check kills us at start_period. Let supervisord come up
++# immediately — frontend's @upstash/redis client and next-auth adapter
++# retry their own connections, and SRH is normally ready by then anyway.
 +
 +# Pin VECTOR_HOST to the loopback service inside this container even if a
 +# user (or a leftover env from upstream's Vercel deployment) overrides it.

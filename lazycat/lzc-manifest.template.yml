@@ -9,7 +9,7 @@ application:
   health_check:
     test_url: http://main:80/health
     timeout: 10s
-    start_period: 90s
+    start_period: 180s
 
 services:
   main:
@@ -78,7 +78,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 90s
+      start_period: 180s
     depends_on:
       - redis-http
 

@@ -165,18 +165,58 @@ bash ~/lazycat-ci/scripts/build-lpk.sh \
 The build is heavy (Next.js full build + bun install for vector).
 Expect ~10-15 min on a fresh build.
 
-## Auth gotchas
+## Auth: Lazycat OIDC integration
 
-- Memfree's next-auth setup includes a `Credentials({ id: 'googleonetap' })`
-  provider that calls back into `${NEXT_PUBLIC_APP_URL}/api/one-tap-login`
-  via server-side fetch. With `NEXT_PUBLIC_APP_URL=""` this becomes a
-  relative URL, which fails server-side. Google One Tap login is
-  effectively disabled — users log in via the standard GitHub / Google
-  OAuth providers if those are configured.
-- `JWT_SECRET` for vector is set to the same value as next-auth's
-  `AUTH_SECRET` (in `lazycat-entrypoint.sh` if not already set, and via
-  the manifest). They must match or vector rejects every authenticated
-  request.
+The primary login path is the lazycat platform's built-in OIDC
+provider, registered automatically when the manifest declares
+`application.oidc_redirect_path`. Our `auth.ts` patch adds a custom
+`'lazycat'` provider that's only registered when all five
+`LAZYCAT_AUTH_OIDC_*` env vars are non-empty (so non-lazycat
+deployments — Vercel etc. — keep upstream behavior unchanged).
+
+End-to-end flow:
+
+```
+POST /api/auth/signin/lazycat
+  → 302 https://<box-domain>/sys/oauth/auth
+       ?response_type=code
+       &client_id=cloud.lazycat.app.memfree
+       &redirect_uri=https://memfree.<box-domain>/api/auth/callback/lazycat
+       &scope=openid+profile+email
+       &state=...
+  → user consents on the lazycat login page
+  → 302 back to /api/auth/callback/lazycat?code=...&state=...
+  → next-auth exchanges code at LAZYCAT_AUTH_OIDC_TOKEN_URI
+  → fetches userinfo at LAZYCAT_AUTH_OIDC_USERINFO_URI
+  → upserts the user (sub, email, name, picture) via
+    UpstashRedisAdapter and sets the session cookie
+```
+
+The lazycat dex line `add oauth client cloud.lazycat.app.memfree
+[https://memfree.{box-domain}/api/auth/callback/lazycat]` in
+`journalctl` confirms registration at install time. The redirect URI
+must match `application.oidc_redirect_path` exactly — next-auth
+generates `/api/auth/callback/<provider-id>` by convention, so
+`oidc_redirect_path` is hardcoded to `/api/auth/callback/lazycat`.
+
+`AUTH_URL=https://${LAZYCAT_APP_DOMAIN}` and `AUTH_TRUST_HOST=true`
+are required so next-auth mints absolute callback URLs against the
+real reverse-proxy domain, not `localhost`.
+
+## Other auth providers
+
+- **GitHub / Google OAuth**: optional, configured per-deploy via
+  `AUTH_GITHUB_*` / `AUTH_GOOGLE_*` deploy params. Works alongside
+  lazycat OIDC.
+- **Resend (email magic link)**: requires a Resend API key, currently
+  not exposed as a deploy param. Disabled in practice.
+- **Google One Tap (`googleonetap` Credentials provider)**: upstream
+  calls `${NEXT_PUBLIC_APP_URL}/api/one-tap-login` server-side. With
+  `NEXT_PUBLIC_APP_URL=""` this becomes a relative URL, which fails
+  server-side. Effectively disabled on lazycat.
+- `JWT_SECRET` (vector) is set to the same value as `AUTH_SECRET`
+  (next-auth) — the lazycat-entrypoint.sh fills it in if unset.
+  They MUST match or vector rejects every authenticated request.
 
 ## Subdomain
 

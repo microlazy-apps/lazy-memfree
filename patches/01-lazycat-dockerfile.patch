@@ -107,10 +107,10 @@ index 0000000..02ec9b0
 +EXPOSE 80
 +ENTRYPOINT ["/usr/bin/tini","--","/app/lazycat-entrypoint.sh"]
 diff --git a/frontend/auth.ts b/frontend/auth.ts
-index d2b5bb1..97b2fd8 100644
+index d2b5bb1..1efa9fb 100644
 --- a/frontend/auth.ts
 +++ b/frontend/auth.ts
-@@ -10,6 +10,50 @@ import { sendVerificationRequest } from '@/lib/auth/auth-send-request';
+@@ -10,6 +10,53 @@ import { sendVerificationRequest } from '@/lib/auth/auth-send-request';
  import { NEXT_PUBLIC_APP_URL } from '@/lib/env';
  import { NODE_ENV } from '@/lib/env';
  
@@ -147,7 +147,10 @@ index d2b5bb1..97b2fd8 100644
 +    userinfo: { url: LAZYCAT_OIDC_USERINFO_URI },
 +    clientId: LAZYCAT_OIDC_CLIENT_ID,
 +    clientSecret: LAZYCAT_OIDC_CLIENT_SECRET,
-+    checks: ['state' as const],
++    // Lazycat's dex requires PKCE — without it the token endpoint returns
++    // {"error":"invalid_request","error_description":"No PKCE flow started.
++    // Cannot check code_verifier."}
++    checks: ['state' as const, 'pkce' as const],
 +    profile(profile: LazycatProfile) {
 +        return {
 +            id: profile.sub,
@@ -161,7 +164,7 @@ index d2b5bb1..97b2fd8 100644
  declare module 'next-auth' {
      interface Session {
          user: {
-@@ -34,6 +78,7 @@ export const config = {
+@@ -34,6 +81,7 @@ export const config = {
          strategy: 'jwt',
      },
      providers: [

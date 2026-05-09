@@ -392,10 +392,10 @@ index 0000000..d666948
 +}
 diff --git a/supervisord.conf b/supervisord.conf
 new file mode 100644
-index 0000000..ed433c6
+index 0000000..3a90705
 --- /dev/null
 +++ b/supervisord.conf
-@@ -0,0 +1,37 @@
+@@ -0,0 +1,41 @@
 +[supervisord]
 +nodaemon=true
 +user=root
@@ -426,7 +426,11 @@ index 0000000..ed433c6
 +[program:frontend]
 +directory=/app/frontend
 +command=/usr/bin/node server.js
-+environment=PORT="3000",HOSTNAME="0.0.0.0",NODE_ENV="production"
++# --dns-result-order=ipv4first works around the box's docker DNS returning
++# both AAAA + A records — undici picks whichever is first (often IPv6) but
++# the SRH container only listens on IPv4, so the UpstashRedisAdapter from
++# next-auth fails with ECONNREFUSED on IPv6 during OIDC callback.
++environment=PORT="3000",HOSTNAME="0.0.0.0",NODE_ENV="production",NODE_OPTIONS="--dns-result-order=ipv4first"
 +autorestart=true
 +stdout_logfile=/dev/stdout
 +stdout_logfile_maxbytes=0
